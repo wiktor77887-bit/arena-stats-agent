@@ -44,6 +44,29 @@ adapter (google-genai, automatic function calling disabled, so the loop runs eve
 The loop stops after 8 model calls (`max_steps`) and logs each question with its tool calls to
 `logs/agent.jsonl`.
 
+## Example
+
+A real run from `logs/agent.jsonl` (the question has a typo: "jinxx"):
+
+```text
+> jinxx czy jhin, kto ma lepsze top 4?
+
+tool calls (both in one model turn):
+  champion_stats {"champion": "Jinx"} -> games 5518, avg_placement 4.60, top4_rate 0.485
+  champion_stats {"champion": "Jhin"} -> games 8516, avg_placement 4.42, top4_rate 0.512
+
+answer:
+  Lepszy wskaźnik top 4 ma Jhin.
+  * Jhin: top 4 rate 51,2%, średnie miejsce 4,42, liczba gier 8 516
+  * Jinx: top 4 rate 48,5%, średnie miejsce 4,60, liczba gier 5 518
+
+model turns: 2
+```
+
+Here the model fixed the obvious typo on its own. When it passes a wrong name anyway,
+the tool returns an `error` with suggestions and the model has to resolve it before answering.
+Every number in the answer appears in the tool results, which is what the `grounded` check verifies.
+
 ## Evaluation
 
 `eval/questions.json` holds 17 questions in 6 categories: single tool, augments, items, typos,
@@ -74,6 +97,21 @@ single runs flash-lite once answered the runes question with no tool calls and m
 Jinx stats (35,481 games, average placement 3.99; the real values are 5,518 and 4.60). The grounding
 check caught it. The suite is small, and both models now pass it, so it is a regression test
 rather than a benchmark. Harder questions are the next thing to add.
+
+## Limitations
+
+- **Correlation, not causation.** Items come from the final inventory, and players knocked out
+  early have fewer items, so `compare_items` partly measures how long a player survived.
+  Augment stats have the same problem to a smaller degree.
+- **Missing context.** The source CSV has round, HP, map and Guest of Honor columns, but the
+  crawler never found those fields in the API, so every row holds the default value. They are not used.
+- **One snapshot.** The data covers one period of Arena and is not split by patch, so balance
+  changes are mixed together.
+- **Small eval suite.** 17 questions, and both models pass all of them. It catches regressions
+  and hallucinations like the one above, but it doesn't separate the models. Harder,
+  multi-step questions are the next step.
+- **Free API tier.** On Gemini's free tier, requests may be used by Google to improve its products.
+  Only public game statistics are sent here.
 
 ## Run
 
