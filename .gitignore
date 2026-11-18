@@ -1,0 +1,18 @@
+# Secrets - never commit
+.env
+.env.*
+!.env.example
+
+# Data and generated database (too big for git, rebuilt with scripts/build_db.py)
+data/*
+!data/.gitkeep
+
+# Agent logs
+logs/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
