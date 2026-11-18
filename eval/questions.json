@@ -1,0 +1,131 @@
+[
+  {
+    "id": "champ_basic",
+    "category": "single_tool",
+    "question": "Jak radzi sobie Jinx w Arenie?",
+    "expect_tools": [{"tool": "champion_stats", "args": {"champion": "Jinx"}}],
+    "expect_values": [{"tool": "champion_stats", "args": {"champion": "Jinx"}, "fields": ["avg_placement", "top4_rate"]}]
+  },
+  {
+    "id": "champ_top4",
+    "category": "single_tool",
+    "question": "Jaki jest top 4 rate Wukonga?",
+    "expect_tools": [{"tool": "champion_stats", "args": {"champion": "Wukong"}}],
+    "expect_values": [{"tool": "champion_stats", "args": {"champion": "Wukong"}, "fields": ["top4_rate"]}]
+  },
+  {
+    "id": "champ_games",
+    "category": "single_tool",
+    "question": "Ile gier w danych zagrano Settem?",
+    "expect_tools": [{"tool": "champion_stats", "args": {"champion": "Sett"}}],
+    "expect_values": [{"tool": "champion_stats", "args": {"champion": "Sett"}, "fields": ["games"]}]
+  },
+  {
+    "id": "aug_champion",
+    "category": "augments",
+    "question": "Jakie są 3 najlepsze augmenty dla Jinx?",
+    "expect_tools": [{"tool": "top_augments", "args": {"champion": "Jinx"}}],
+    "expect_values": [{"tool": "top_augments", "args": {"champion": "Jinx", "n": 3}, "fields": ["augments.0.augment", "augments.0.avg_placement"]}]
+  },
+  {
+    "id": "aug_global",
+    "category": "augments",
+    "question": "Który augment jest najlepszy ogólnie, niezależnie od bohatera (minimum 100 gier)?",
+    "expect_tools": [{"tool": "top_augments", "args": {"champion": null}}],
+    "expect_values": [{"tool": "top_augments", "args": {}, "fields": ["augments.0.augment"]}]
+  },
+  {
+    "id": "aug_english",
+    "category": "augments",
+    "question": "What are the best augments for Jhin?",
+    "expect_tools": [{"tool": "top_augments", "args": {"champion": "Jhin"}}],
+    "expect_values": [{"tool": "top_augments", "args": {"champion": "Jhin"}, "fields": ["augments.0.augment"]}]
+  },
+  {
+    "id": "aug_small_sample",
+    "category": "augments",
+    "question": "Pokaż najlepsze augmenty dla Rek'Sai, nawet takie, które wybrano tylko kilka razy (minimum 1 gra).",
+    "expect_tools": [{"tool": "top_augments", "args": {"champion": "Rek'Sai", "min_games": 1}}],
+    "expect_values": [{"tool": "top_augments", "args": {"champion": "Rek'Sai", "min_games": 1}, "fields": ["augments.0.augment"]}],
+    "must_mention_any": ["mał", "próbk", "niewiele", "tylko 1", "jednej gr", "jedna gra", "jednej partii", "niewiarygod", "ostrożn", "nie są miarodajn", "niemiarodajn", "small sample"]
+  },
+  {
+    "id": "items_compare",
+    "category": "items",
+    "question": "Co jest lepsze na Jinx: Ostrze Nieskończoności czy Pogromca Krakenów?",
+    "expect_tools": [{"tool": "compare_items", "args": {"champion": "Jinx", "item_a": "Ostrze Nieskończoności", "item_b": "Pogromca Krakenów"}}],
+    "expect_values": [{"tool": "compare_items", "args": {"champion": "Jinx", "item_a": "Ostrze Nieskończoności", "item_b": "Pogromca Krakenów"}, "fields": ["item_a.avg_placement", "item_b.avg_placement"]}],
+    "must_mention_any": ["korelac", "przyczyn", "nie oznacza", "końcowego ekwipunku", "końcowy ekwipunek", "finalnego ekwipunku", "correlation"]
+  },
+  {
+    "id": "items_no_diacritics",
+    "category": "typos",
+    "question": "ostrze nieskonczonosci vs zaplata zniwiarza na jinx, co daje lepsze miejsce?",
+    "expect_tools": [{"tool": "compare_items", "args": {"champion": "Jinx", "item_a": "Ostrze Nieskończoności", "item_b": "Zapłata Żniwiarza"}}],
+    "expect_values": [{"tool": "compare_items", "args": {"champion": "Jinx", "item_a": "Ostrze Nieskończoności", "item_b": "Zapłata Żniwiarza"}, "fields": ["item_a.avg_placement", "item_b.avg_placement"]}]
+  },
+  {
+    "id": "typo_champion",
+    "category": "typos",
+    "question": "Jak gra się Jinxx?",
+    "expect_tools": [{"tool": "champion_stats", "args": {"champion": "Jinx"}}],
+    "expect_values": [{"tool": "champion_stats", "args": {"champion": "Jinx"}, "fields": ["avg_placement"]}]
+  },
+  {
+    "id": "typo_mundo",
+    "category": "typos",
+    "question": "staty dla mundo",
+    "expect_tools": [{"tool": "champion_stats", "args": {"champion": "Dr Mundo"}}],
+    "expect_values": [{"tool": "champion_stats", "args": {"champion": "Dr Mundo"}, "fields": ["avg_placement"]}]
+  },
+  {
+    "id": "compare_champs",
+    "category": "comparison",
+    "question": "Kto ma lepsze średnie miejsce: Jhin czy Jinx?",
+    "expect_tools": [
+      {"tool": "champion_stats", "args": {"champion": "Jhin"}},
+      {"tool": "champion_stats", "args": {"champion": "Jinx"}}
+    ],
+    "expect_values": [
+      {"tool": "champion_stats", "args": {"champion": "Jhin"}, "fields": ["avg_placement"]},
+      {"tool": "champion_stats", "args": {"champion": "Jinx"}, "fields": ["avg_placement"]}
+    ]
+  },
+  {
+    "id": "multi_step",
+    "category": "comparison",
+    "question": "Który z bohaterów, Sett czy Zed, ma wyższy top 4 rate? Podaj też najlepszy augment dla tego lepszego.",
+    "expect_tools": [
+      {"tool": "champion_stats", "args": {"champion": "Sett"}},
+      {"tool": "champion_stats", "args": {"champion": "Zed"}}
+    ],
+    "expect_values": [
+      {"tool": "champion_stats", "args": {"champion": "Sett"}, "fields": ["top4_rate"]},
+      {"tool": "champion_stats", "args": {"champion": "Zed"}, "fields": ["top4_rate"]}
+    ]
+  },
+  {
+    "id": "oos_unknown_champion",
+    "category": "out_of_scope",
+    "question": "Jak radzi sobie Pikachu w Arenie?",
+    "must_mention_any": ["nie ma", "brak", "nie znalaz", "nie wystepuje", "nie istnieje", "nie posiad", "nie zawiera", "nie jest", "not in the data", "not found"]
+  },
+  {
+    "id": "oos_runes",
+    "category": "out_of_scope",
+    "question": "Jakie runy najlepiej brać na Jinx w Arenie?",
+    "must_mention_any": ["nie ma", "brak", "nie posiad", "nie zawiera", "nie obejmuj", "nie mam", "nie dysponuj", "nie moge", "nie sa dostepn", "nie jest dostepn", "nie wystepuj"]
+  },
+  {
+    "id": "oos_patch",
+    "category": "out_of_scope",
+    "question": "Jaki był winrate Jinx w rankedach na patchu 14.5?",
+    "must_mention_any": ["nie ma", "brak", "nie posiad", "nie zawiera", "nie obejmuj", "nie mam", "nie dysponuj", "nie moge", "nie sa dostepn", "nie jest dostepn", "tylko aren", "wylacznie aren", "nie rozroznia", "nie dotycz"]
+  },
+  {
+    "id": "oos_item_price",
+    "category": "out_of_scope",
+    "question": "Ile złota kosztuje Ostrze Nieskończoności?",
+    "must_mention_any": ["nie ma", "brak", "nie posiad", "nie zawiera", "nie obejmuj", "nie mam", "nie dysponuj", "nie moge", "nie sa dostepn", "nie jest dostepn"]
+  }
+]

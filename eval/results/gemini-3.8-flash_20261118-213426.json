@@ -1,0 +1,1677 @@
+{
+  "model": "gemini-3.8-flash",
+  "summary": {
+    "cases": 51,
+    "pass_rate": 1.0,
+    "tool_accuracy": 1.0,
+    "value_accuracy": 1.0,
+    "grounded_rate": 1.0,
+    "mentions_rate": 1.0,
+    "errors": 0,
+    "avg_tool_calls": 1.73,
+    "avg_seconds": 8.48,
+    "by_category": {
+      "augments": "12/12",
+      "comparison": "6/6",
+      "items": "3/3",
+      "out_of_scope": "12/12",
+      "single_tool": "9/9",
+      "typos": "9/9"
+    }
+  },
+  "cases": [
+    {
+      "id": "champ_basic",
+      "category": "single_tool",
+      "question": "Jak radzi sobie Jinx w Arenie?",
+      "answer": "Oto statystyki **Jinx** w trybie Arena:\n\n* **Liczba gier:** 5 518\n* **Popularność (pick share):** 0,61%\n* **Średnie miejsce:** 4,60 (im niższe, tym lepsze)\n* **Wskaźnik Top 4 (wygrane):** 48,5%\n* **Wskaźnik Top 2:** 23,2%\n* **Wskaźnik 1. miejsca:** 11,2%\n\nJinx radzi sobie nieco poniżej średniej (mniej niż 50% gier kończy w Top 4). \n\n### Najlepsze ulepszenia (augmenty) dla Jinx:\n1. **Obrona albo Nic** – śr. miejsce: 3,71 | Top 4: 65,8% (117 gier)\n2. **Obie Ręce Zajęte** – śr. miejsce: 3,78 | Top 4: 63,8% (879 gier)\n3. **Wrażliwość** – śr. miejsce: 3,81 | Top 4: 65,9% (261 gier)\n4. **Pochłanianie Dusz** – śr. miejsce: 3,89 | Top 4: 66,5% (257 gier)\n5. **Dobądź Miecza** – śr. miejsce: 3,92 | Top 4: 60,5% (370 gier)",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 10.49,
+      "error": null
+    },
+    {
+      "id": "champ_top4",
+      "category": "single_tool",
+      "question": "Jaki jest top 4 rate Wukonga?",
+      "answer": "Top-4 rate Wukonga w trybie Arena wynosi **49,3%** (0,493).\n\nKluczowe statystyki Wukonga:\n- **Liczba gier:** 3 789\n- **Średnie miejsce:** 4,54\n- **Top 4 rate:** 49,3%\n- **Top 2 rate:** 22,2%\n- **Wskaźnik wygranych (1. miejsce):** 10,8%",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "champion",
+            "text": "Wukong"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Wukong"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 9.55,
+      "error": null
+    },
+    {
+      "id": "champ_games",
+      "category": "single_tool",
+      "question": "Ile gier w danych zagrano Settem?",
+      "answer": "W danych zarejestrowano **10 411** gier rozegranych Settem.\n\nOto jego kluczowe statystyki:\n- **Liczba gier:** 10 411\n- **Średnie miejsce:** 4,31\n- **Wskaźnik Top 4:** 52,8%",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Sett"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 5.45,
+      "error": null
+    },
+    {
+      "id": "aug_champion",
+      "category": "augments",
+      "question": "Jakie są 3 najlepsze augmenty dla Jinx?",
+      "answer": "Oto 3 najlepsze augmenty dla **Jinx** (uszeregowane według najniższego średniego miejsca, min. 100 gier; bazowe średnie miejsce Jinx to 4,60):\n\n1. **Obrona albo Nic**\n   - **Średnie miejsce:** 3,71\n   - **Top 4 rate:** 65,8%\n   - **Gier:** 117 (1. miejsce: 21,4%)\n\n2. **Obie Ręce Zajęte**\n   - **Średnie miejsce:** 3,78\n   - **Top 4 rate:** 63,8%\n   - **Gier:** 879 (1. miejsce: 18,5%)\n\n3. **Wrażliwość**\n   - **Średnie miejsce:** 3,81\n   - **Top 4 rate:** 65,9%\n   - **Gier:** 261 (1. miejsce: 17,2%)",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "n": 3
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 7.86,
+      "error": null
+    },
+    {
+      "id": "aug_global",
+      "category": "augments",
+      "question": "Który augment jest najlepszy ogólnie, niezależnie od bohatera (minimum 100 gier)?",
+      "answer": "Najlepszym augmentem ogólnie (przy minimum 100 grach) jest **Energia Ogromnego Smoka**.\n\nOto jego statystyki:\n* **Liczba gier:** 411\n* **Średnie miejsce:** 2,96 (o 1,54 lepsze od średniej)\n* **Wskaźnik top 4:** 77,4%\n* **Wskaźnik top 2:** 54,7%\n* **Wskaźnik 1. miejsca:** 33,8%\n\nDrugim najlepszym augmentem pod względem średniego miejsca jest **Ochroniarz** (średnie miejsce: 3,64, top 4: 67,0%, 7620 gier).",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "min_games": 100,
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 8.34,
+      "error": null
+    },
+    {
+      "id": "aug_english",
+      "category": "augments",
+      "question": "What are the best augments for Jhin?",
+      "answer": "Here are the best augments for **Jhin** (ranked by average placement, minimum 100 games; baseline average placement for Jhin is 4.42):\n\n1. **Wyższa Szkoła Błaznowania**\n   - **Average Placement:** 3.40 (-1.02 vs baseline)\n   - **Top-4 Rate:** 70.8%\n   - **Top-2 Rate:** 42.2% | **1st Place Rate:** 21.1%\n   - **Games:** 161\n\n2. **Za Moment Wracamy**\n   - **Average Placement:** 3.50 (-0.92 vs baseline)\n   - **Top-4 Rate:** 72.2%\n   - **Top-2 Rate:** 34.7% | **1st Place Rate:** 19.4%\n   - **Games:** 144\n\n3. **Boska interwencja**\n   - **Average Placement:** 3.50 (-0.92 vs baseline)\n   - **Top-4 Rate:** 70.9%\n   - **Top-2 Rate:** 35.9% | **1st Place Rate:** 17.9%\n   - **Games:** 117\n\n4. **Leczenie Krytyczne**\n   - **Average Placement:** 3.60 (-0.82 vs baseline)\n   - **Top-4 Rate:** 66.7%\n   - **Top-2 Rate:** 38.0% | **1st Place Rate:** 17.6%\n   - **Games:** 108\n\n5. **Rewolucja Przywoływaczy**\n   - **Average Placement:** 3.62 (-0.80 vs baseline)\n   - **Top-4 Rate:** 67.7%\n   - **Top-2 Rate:** 36.6% | **1st Place Rate:** 14.2%\n   - **Games:** 232",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jhin"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 7.7,
+      "error": null
+    },
+    {
+      "id": "aug_small_sample",
+      "category": "augments",
+      "question": "Pokaż najlepsze augmenty dla Rek'Sai, nawet takie, które wybrano tylko kilka razy (minimum 1 gra).",
+      "answer": "Oto najlepsze augmenty dla Rek'Sai przy minimalnym progu 1 gry (pamiętaj, że ze względu na bardzo małą liczbę gier próbka jest mała, a wyniki są mało miarodajne):\n\n1. **Symbiotyczna Mutacja**\n   - Liczba gier: 1\n   - Średnie miejsce: 2,00\n   - Top 4: 100%\n\n2. **Gorąca Wyprzedaż**\n   - Liczba gier: 7\n   - Średnie miejsce: 2,71\n   - Top 4: 85,7% (1. miejsce: 28,6%)\n\n3. **Umysł Roju**\n   - Liczba gier: 9\n   - Średnie miejsce: 2,89\n   - Top 4: 100% (1. miejsce: 22,2%)\n\n4. **Krąg Śmierci**\n   - Liczba gier: 1\n   - Średnie miejsce: 3,00\n   - Top 4: 100%\n\n5. **Apteczka**\n   - Liczba gier: 1\n   - Średnie miejsce: 3,00\n   - Top 4: 100%\n\n*Dla porównania: ogólne średnie miejsce Rek'Sai wynosi 4,71 (na podstawie 2 756 gier).*",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "champion",
+            "text": "Rek'Sai"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "min_games": 1,
+            "champion": "Rek'Sai",
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 11.84,
+      "error": null
+    },
+    {
+      "id": "items_compare",
+      "category": "items",
+      "question": "Co jest lepsze na Jinx: Ostrze Nieskończoności czy Pogromca Krakenów?",
+      "answer": "Na Jinx lepsze wyniki osiąga **Ostrze Nieskończoności**.\n\nOto porównanie statystyk obu przedmiotów:\n\n* **Ostrze Nieskończoności**:\n  * Liczba gier: **3721**\n  * Średnie miejsce: **4,34** (niższe = lepsze)\n  * Top-4: **53,3%**\n  * Top-2: **25,5%**\n\n* **Pogromca Krakenów**:\n  * Liczba gier: **1716**\n  * Średnie miejsce: **4,67**\n  * Top-4: **46,2%**\n  * Top-2: **20,5%**\n\n* **Z oboma przedmiotami naraz**:\n  * Liczba gier: **1201**\n  * Średnie miejsce: **4,49**\n  * Top-4: **49,1%**\n\nOstrze Nieskończoności zapewnia średnio o **0,33** lepsze miejsce oraz znacznie wyższy wskaźnik wygranych (top-4). \n\n*Warto pamiętać, że statystyki pochodzą z końcowego ekwipunku graczy, dlatego odzwierciedlają korelację, a nie bezpośredni związek przyczynowo-skutkowy.*",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Ostrze Nieskończoności",
+            "kind": "item"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Pogromca Krakenów",
+            "kind": "item"
+          }
+        },
+        {
+          "tool": "compare_items",
+          "args": {
+            "item_b": "Pogromca Krakenów",
+            "item_a": "Ostrze Nieskończoności",
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 11.57,
+      "error": null
+    },
+    {
+      "id": "items_no_diacritics",
+      "category": "typos",
+      "question": "ostrze nieskonczonosci vs zaplata zniwiarza na jinx, co daje lepsze miejsce?",
+      "answer": "Lepsze średnie miejsce na Jinx osiąga **Zapłata Żniwiarza**, choć różnica jest niewielka:\n\n* **Zapłata Żniwiarza**:\n  * Liczba gier: 1791\n  * Średnie miejsce: **4.30** (niższe jest lepsze)\n  * Top 4: **53.8%** (Top 2: 28.0%)\n* **Ostrze Nieskończoności**:\n  * Liczba gier: 3721\n  * Średnie miejsce: **4.34**\n  * Top 4: **53.3%** (Top 2: 25.5%)\n\nW przypadku posiadania **obu przedmiotów naraz** (1159 gier) średnie miejsce wynosi **4.04**, a wskaźnik Top 4 to **58.5%**.\n\n*Uwaga: Statystyki pochodzą z końcowego ekwipunku graczy, więc odzwierciedlają korelację, a nie bezpośredni związek przyczynowo-skutkowy.*",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "ostrze nieskonczonosci",
+            "kind": "item"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "zaplata zniwiarza",
+            "kind": "item"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "jinx",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "compare_items",
+          "args": {
+            "item_a": "Ostrze Nieskończoności",
+            "champion": "Jinx",
+            "item_b": "Zapłata Żniwiarza"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 12.81,
+      "error": null
+    },
+    {
+      "id": "typo_champion",
+      "category": "typos",
+      "question": "Jak gra się Jinxx?",
+      "answer": "Statystyki dla **Jinx** w trybie Arena:\n\n### Ogólne wyniki\n* **Liczba gier:** 5 518\n* **Średnie miejsce:** 4,60\n* **Odsetek zwycięstw (Top 4):** 48,5%\n* **Top 2:** 23,2%\n* **1. miejsce:** 11,2%\n* **Częstość wyboru (Pick share):** 0,61%\n\n---\n\n### Najlepsze ulepszenia (Augmenty) dla Jinx (min. 100 gier)\n1. **Obrona albo Nic** – średnie miejsce: **3,71** (Top 4: 65,8%, 117 gier)\n2. **Obie Ręce Zajęte** – średnie miejsce: **3,78** (Top 4: 63,8%, 879 gier)\n3. **Wrażliwość** – średnie miejsce: **3,81** (Top 4: 65,9%, 261 gier)\n4. **Pochłanianie Dusz** – średnie miejsce: **3,89** (Top 4: 66,5%, 257 gier)\n5. **Dobądź Miecza** – średnie miejsce: **3,92** (Top 4: 60,5%, 370 gier)",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Jinxx",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 11.03,
+      "error": null
+    },
+    {
+      "id": "typo_mundo",
+      "category": "typos",
+      "question": "staty dla mundo",
+      "answer": "Oto statystyki dla **Dr Mundo** w trybie Arena:\n\n### Ogólne statystyki:\n* **Liczba gier:** 8 905\n* **Średnie miejsce:** 4,41 *(im niższe, tym lepsze)*\n* **Top 4 (wygrana):** 50,7%\n* **Top 2:** 28,8%\n* **1. miejsce:** 17,2%\n* **Popularność (pick share):** 0,99%\n\n### Najlepsze ulepszenia (min. 100 gier):\n1. **Centrum Wszechświata** – śr. miejsce: 3,26 | Top 4: 72,7% (598 gier)\n2. **Wrażliwość** – śr. miejsce: 3,27 | Top 4: 71,5% (242 gry)\n3. **Boska interwencja** – śr. miejsce: 3,34 | Top 4: 71,8% (110 gier)\n4. **Ulepszona Moc** – śr. miejsce: 3,42 | Top 4: 72,1% (226 gier)\n5. **Wyższa Szkoła Błaznowania** – śr. miejsce: 3,51 | Top 4: 64,6% (147 gier)",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "mundo",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Dr Mundo"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Dr Mundo",
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 10.42,
+      "error": null
+    },
+    {
+      "id": "compare_champs",
+      "category": "comparison",
+      "question": "Kto ma lepsze średnie miejsce: Jhin czy Jinx?",
+      "answer": "Lepsze średnie miejsce ma **Jhin** (im niższa wartość, tym lepiej):\n\n* **Jhin**:\n  * Średnie miejsce: **4,42**\n  * Liczba gier: 8 516\n  * Top 4 (wygrane): 51,2% (wskaźnik 1. miejsca: 12,1%)\n\n* **Jinx**:\n  * Średnie miejsce: **4,60**\n  * Liczba gier: 5 518\n  * Top 4 (wygrane): 48,5% (wskaźnik 1. miejsca: 11,2%)",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jhin"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 6.73,
+      "error": null
+    },
+    {
+      "id": "multi_step",
+      "category": "comparison",
+      "question": "Który z bohaterów, Sett czy Zed, ma wyższy top 4 rate? Podaj też najlepszy augment dla tego lepszego.",
+      "answer": "Wyższy top-4 rate ma **Sett**:\n\n* **Sett**:\n  * **Top-4 rate**: 52,8%\n  * **Średnie miejsce**: 4,31\n  * **Liczba gier**: 10 411\n* **Zed**:\n  * **Top-4 rate**: 50,8%\n  * **Średnie miejsce**: 4,45\n  * **Liczba gier**: 8 758\n\nNajlepszym augmentem dla Setta jest **Rajdowy Boss**:\n* **Średnie miejsce**: 2,98 (o 1,33 lepsze niż średnia bohatera)\n* **Top-4 rate**: 76,6%\n* **Liczba gier**: 329",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Sett"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Zed"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Sett",
+            "n": 1
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 11.18,
+      "error": null
+    },
+    {
+      "id": "oos_unknown_champion",
+      "category": "out_of_scope",
+      "question": "Jak radzi sobie Pikachu w Arenie?",
+      "answer": "Postać **Pikachu** nie występuje w League of Legends ani w bazie danych trybu Arena. Nie posiadam dla niej żadnych statystyk.",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "champion",
+            "text": "Pikachu"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 5.29,
+      "error": null
+    },
+    {
+      "id": "oos_runes",
+      "category": "out_of_scope",
+      "question": "Jakie runy najlepiej brać na Jinx w Arenie?",
+      "answer": "W trybie Arena nie ma tradycyjnych run (ani danych na ich temat w narzędziach). Zamiast run wybiera się **ulepszenia (augmenty)**.\n\nJeśli miałeś na myśli ulepszenia, oto najlepsze z nich dla **Jinx** (uszeregowane według średniego miejsca, im niższe, tym lepsze):\n\n1. **Obrona albo Nic** – śr. miejsce: 3.71, Top 4: 65.8% (117 gier)\n2. **Obie Ręce Zajęte** – śr. miejsce: 3.78, Top 4: 63.8% (879 gier)\n3. **Wrażliwość** – śr. miejsce: 3.81, Top 4: 65.9% (261 gier)\n4. **Pochłanianie Dusz** – śr. miejsce: 3.89, Top 4: 66.5% (257 gier)\n5. **Dobądź Miecza** – śr. miejsce: 3.92, Top 4: 60.5% (370 gier)\n\n*(Średnia ogólna Jinx to 4.60 na przestrzeni 5 518 gier).*",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 13.53,
+      "error": null
+    },
+    {
+      "id": "oos_patch",
+      "category": "out_of_scope",
+      "question": "Jaki był winrate Jinx w rankedach na patchu 14.5?",
+      "answer": "Nie posiadam takich danych. Dysponuję statystykami wyłącznie dla trybu Arena (2v2v2v2), dlatego nie mogę sprawdzić współczynnika zwycięstw (winrate) z gier rankingowych ani danych z konkretnego patcha (14.5).",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [],
+      "model_turns": 1,
+      "seconds": 4.23,
+      "error": null
+    },
+    {
+      "id": "oos_item_price",
+      "category": "out_of_scope",
+      "question": "Ile złota kosztuje Ostrze Nieskończoności?",
+      "answer": "Dostępne narzędzia zawierają wyłącznie statystyki rozgrywek (takie jak liczba gier, średnie miejsce czy współczynnik top-4) i nie posiadają danych na temat cen przedmiotów w złocie. Nie jestem w stanie odpowiedzieć na to pytanie na podstawie dostępnych danych.",
+      "run": 1,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [],
+      "model_turns": 1,
+      "seconds": 3.66,
+      "error": null
+    },
+    {
+      "id": "champ_basic",
+      "category": "single_tool",
+      "question": "Jak radzi sobie Jinx w Arenie?",
+      "answer": "Oto statystyki **Jinx** w trybie Arena:\n\n* **Liczba gier:** 5 518\n* **Średnie miejsce:** 4,60 *(niższe = lepsze)*\n* **Wskaźnik Top 4 (wygrane):** 48,5%\n* **Wskaźnik Top 2:** 23,2%\n* **Wskaźnik 1. miejsca:** 11,2%\n* **Częstość wyboru (pick share):** 0,61%\n\nJinx radzi sobie nieco poniżej średniej (średnie miejsce powyżej 4,50 i poniżej 50% wygranych).\n\n### Najlepsze ulepszenia (min. 100 gier):\n1. **Obrona albo Nic** – śr. miejsce 3,71 | Top 4: 65,8% (117 gier)\n2. **Obie Ręce Zajęte** – śr. miejsce 3,78 | Top 4: 63,8% (879 gier)\n3. **Wrażliwość** – śr. miejsce 3,81 | Top 4: 65,9% (261 gier)\n4. **Pochłanianie Dusz** – śr. miejsce 3,89 | Top 4: 66,5% (257 gier)\n5. **Dobądź Miecza** – śr. miejsce 3,92 | Top 4: 60,5% (370 gier)",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 9.24,
+      "error": null
+    },
+    {
+      "id": "champ_top4",
+      "category": "single_tool",
+      "question": "Jaki jest top 4 rate Wukonga?",
+      "answer": "Wskaźnik top 4 (top-4 rate) dla **Wukonga** wynosi **49,3%** (0,493).\n\nKluczowe statystyki Wukonga:\n- **Liczba gier:** 3789\n- **Średnie miejsce:** 4,54\n- **Top 4 rate:** 49,3%\n- **Top 2 rate:** 22,2%\n- **1. miejsce:** 10,8%",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Wukong",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Wukong"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 6.6,
+      "error": null
+    },
+    {
+      "id": "champ_games",
+      "category": "single_tool",
+      "question": "Ile gier w danych zagrano Settem?",
+      "answer": "W danych zarejestrowano **10 411** gier rozegranych Settem (średnie miejsce: 4,31, wskaźnik top 4: 52,8%).",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Sett"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 4.7,
+      "error": null
+    },
+    {
+      "id": "aug_champion",
+      "category": "augments",
+      "question": "Jakie są 3 najlepsze augmenty dla Jinx?",
+      "answer": "Oto 3 najlepsze ulepszenia (augmenty) dla Jinx pod względem średniego miejsca (minimum 100 gier):\n\n1. **Obrona albo Nic**\n   * **Średnie miejsce:** 3,71\n   * **Wskaźnik Top 4:** 65,8% (1. miejsce: 21,4%)\n   * **Liczba gier:** 117\n\n2. **Obie Ręce Zajęte**\n   * **Średnie miejsce:** 3,78\n   * **Wskaźnik Top 4:** 63,8% (1. miejsce: 18,5%)\n   * **Liczba gier:** 879\n\n3. **Wrażliwość**\n   * **Średnie miejsce:** 3,81\n   * **Wskaźnik Top 4:** 65,9% (1. miejsce: 17,2%)\n   * **Liczba gier:** 261\n\n*(Dla porównania: bazowe średnie miejsce Jinx wynosi 4,60 na przestrzeni 5518 gier).*",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "n": 3
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 8.45,
+      "error": null
+    },
+    {
+      "id": "aug_global",
+      "category": "augments",
+      "question": "Który augment jest najlepszy ogólnie, niezależnie od bohatera (minimum 100 gier)?",
+      "answer": "Najlepszym augmentem ogólnie (dla minimum 100 gier) jest **Energia Ogromnego Smoka**:\n\n* **Średnie miejsce:** 2,96 (o 1,54 lepsze od średniej)\n* **Liczba gier:** 411\n* **Wskaźnik Top 4:** 77,4%\n* **Wskaźnik Top 2:** 54,7%\n* **Wskaźnik wygranych (1. miejsce):** 33,8%\n\nDla porównania, kolejnym najlepszym augmentem pod względem średniego miejsca (z dużo większą próbą) jest **Ochroniarz** (śr. miejsce: 3,64; 7620 gier; 67,0% Top 4).",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "min_games": 100,
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 6.52,
+      "error": null
+    },
+    {
+      "id": "aug_english",
+      "category": "augments",
+      "question": "What are the best augments for Jhin?",
+      "answer": "Based on Arena match data (minimum 100 games, compared to Jhin's baseline average placement of 4.42 across 8,516 games), here are the best-performing augments for Jhin ranked by average placement (lower is better):\n\n1. **Wyższa Szkoła Błaznowania**\n   - **Average Placement:** 3.40 (-1.02 vs baseline)\n   - **Top-4 Rate:** 70.8%\n   - **1st-Place Rate:** 21.1%\n   - **Games:** 161\n\n2. **Za Moment Wracamy**\n   - **Average Placement:** 3.50 (-0.92 vs baseline)\n   - **Top-4 Rate:** 72.2%\n   - **1st-Place Rate:** 19.4%\n   - **Games:** 144\n\n3. **Boska interwencja**\n   - **Average Placement:** 3.50 (-0.92 vs baseline)\n   - **Top-4 Rate:** 70.9%\n   - **1st-Place Rate:** 17.9%\n   - **Games:** 117\n\n4. **Leczenie Krytyczne**\n   - **Average Placement:** 3.60 (-0.82 vs baseline)\n   - **Top-4 Rate:** 66.7%\n   - **1st-Place Rate:** 17.6%\n   - **Games:** 108\n\n5. **Rewolucja Przywoływaczy**\n   - **Average Placement:** 3.62 (-0.80 vs baseline)\n   - **Top-4 Rate:** 67.7%\n   - **1st-Place Rate:** 14.2%\n   - **Games:** 232\n\n*(Note: Augment names are listed in Polish as tracked in the match database).*",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jhin"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 10.06,
+      "error": null
+    },
+    {
+      "id": "aug_small_sample",
+      "category": "augments",
+      "question": "Pokaż najlepsze augmenty dla Rek'Sai, nawet takie, które wybrano tylko kilka razy (minimum 1 gra).",
+      "answer": "Oto najlepsze ulepszenia (augmenty) dla **Rek'Sai** przy minimalnym progu 1 gry (posortowane według średniego miejsca; niższe = lepsze). \n\n*Uwaga: Z uwagi na bardzo małą próbę gier przy większości z nich, wyniki te są wysoce niemiarodajne.*\n\nBazowa średnia Rek'Sai (ze wszystkich 2756 gier): **śr. miejsce 4,71**.\n\n1. **Symbiotyczna Mutacja** – śr. miejsce: **2,00** | gry: **1** | top-4: **100%**\n2. **Gorąca Wyprzedaż** – śr. miejsce: **2,71** | gry: **7** | top-4: **85,7%**\n3. **Umysł Roju** – śr. miejsce: **2,89** | gry: **9** | top-4: **100%**\n4. **Krąg Śmierci** – śr. miejsce: **3,00** | gry: **1** | top-4: **100%**\n5. **Apteczka** – śr. miejsce: **3,00** | gry: **1** | top-4: **100%**\n6. **Matrioszka** – śr. miejsce: **3,25** | gry: **12** | top-4: **75,0%**\n7. **Rewolucja Przywoływaczy** – śr. miejsce: **3,35** | gry: **40** | top-4: **77,5%**\n8. **Energiczność** – śr. miejsce: **3,38** | gry: **8** | top-4: **50,0%**\n9. **Wysięgnikowa Ręka** – śr. miejsce: **3,42** | gry: **43** | top-4: **65,1%**\n10. **Nie do Przeskoczenia** – śr. miejsce: **3,46** | gry: **13** | top-4: **76,9%**",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Rek'Sai",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Rek'Sai",
+            "min_games": 1,
+            "n": 10
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 11.77,
+      "error": null
+    },
+    {
+      "id": "items_compare",
+      "category": "items",
+      "question": "Co jest lepsze na Jinx: Ostrze Nieskończoności czy Pogromca Krakenów?",
+      "answer": "Na Jinx wyraźnie lepiej wypada **Ostrze Nieskończoności**:\n\n* **Ostrze Nieskończoności**:\n  * Liczba gier: **3721**\n  * Średnie miejsce: **4,34** (niższe = lepsze)\n  * Top 4: **53,3%**\n  * Top 2: **25,5%**\n\n* **Pogromca Krakenów**:\n  * Liczba gier: **1716**\n  * Średnie miejsce: **4,67**\n  * Top 4: **46,2%**\n  * Top 2: **20,5%**\n\n* **Oba przedmioty razem**: 1201 gier, średnie miejsce 4,49, Top 4: 49,1%.\n\nOstrze Nieskończoności osiąga lepsze średnie miejsce (o 0,33) oraz wyższy współczynnik wygranych (Top 4). Należy jednak pamiętać, że statystyki pochodzą z końcowego ekwipunku, więc odzwierciedlają korelację, a nie bezpośrednią przyczynowość.",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Ostrze Nieskończoności",
+            "kind": "item"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "item",
+            "text": "Pogromca Krakenów"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Jinx",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "compare_items",
+          "args": {
+            "item_b": "Pogromca Krakenów",
+            "item_a": "Ostrze Nieskończoności",
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 12.18,
+      "error": null
+    },
+    {
+      "id": "items_no_diacritics",
+      "category": "typos",
+      "question": "ostrze nieskonczonosci vs zaplata zniwiarza na jinx, co daje lepsze miejsce?",
+      "answer": "Nieco lepsze wyniki na Jinx osiąga **Zapłata Żniwiarza** (niższe średnie miejsce oznacza lepszy wynik):\n\n* **Zapłata Żniwiarza**:\n  * Liczba gier: **1791**\n  * Średnie miejsce: **4,30**\n  * Top 4: **53,8%**\n  * Top 2: **28,0%** (1. miejsce: 13,9%)\n\n* **Ostrze Nieskończoności**:\n  * Liczba gier: **3721**\n  * Średnie miejsce: **4,34**\n  * Top 4: **53,3%**\n  * Top 2: **25,5%** (1. miejsce: 12,2%)\n\n* **Oba przedmioty razem**:\n  * Liczba gier: **1159**\n  * Średnie miejsce: **4,04**\n  * Top 4: **58,5%**\n\n*Pamiętaj, że statystyki pochodzą z końcowego ekwipunku graczy, co wskazuje na korelację, a nie bezpośredni związek przyczynowo-skutkowy.*",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "item",
+            "text": "ostrze nieskonczonosci"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "item",
+            "text": "zaplata zniwiarza"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "jinx",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "compare_items",
+          "args": {
+            "champion": "Jinx",
+            "item_b": "Zapłata Żniwiarza",
+            "item_a": "Ostrze Nieskończoności"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 12.84,
+      "error": null
+    },
+    {
+      "id": "typo_champion",
+      "category": "typos",
+      "question": "Jak gra się Jinxx?",
+      "answer": "Oto statystyki i najlepsze ulepszenia dla **Jinx** w trybie Arena:\n\n### Ogólne statystyki\n* **Liczba gier:** 5 518\n* **Średnie miejsce:** 4,60 *(im niższe, tym lepsze)*\n* **Top 4 (zwycięstwo):** 48,5%\n* **Top 2:** 23,2%\n* **1. miejsce:** 11,2%\n* **Udział w grach (pick share):** 0,61%\n\n---\n\n### Najlepsze ulepszenia (Augmenty)\n*(min. 100 gier, uszeregowane według średniego miejsca)*\n\n1. **Obrona albo Nic** – śr. miejsce: **3,71** | Top 4: **65,8%** (117 gier)\n2. **Obie Ręce Zajęte** – śr. miejsce: **3,78** | Top 4: **63,8%** (879 gier)\n3. **Wrażliwość** – śr. miejsce: **3,81** | Top 4: **65,9%** (261 gier)\n4. **Pochłanianie Dusz** – śr. miejsce: **3,89** | Top 4: **66,5%** (257 gier)\n5. **Dobądź Miecza** – śr. miejsce: **3,92** | Top 4: **60,5%** (370 gier)",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "champion",
+            "text": "Jinxx"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 10.3,
+      "error": null
+    },
+    {
+      "id": "typo_mundo",
+      "category": "typos",
+      "question": "staty dla mundo",
+      "answer": "Statystyki dla **Dr Mundo** w trybie Arena:\n\n* **Liczba gier:** 8 905\n* **Średnie miejsce:** 4,41 (im niższe, tym lepsze)\n* **Top 4 (wygrana):** 50,7%\n* **Top 2:** 28,8%\n* **1. miejsce:** 17,2%\n* **Wskaźnik wyboru (pick share):** 0,99%",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "mundo",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Dr Mundo"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 8.08,
+      "error": null
+    },
+    {
+      "id": "compare_champs",
+      "category": "comparison",
+      "question": "Kto ma lepsze średnie miejsce: Jhin czy Jinx?",
+      "answer": "Lepsze średnie miejsce ma **Jhin** (im niższa wartość, tym lepiej):\n\n* **Jhin**:\n  * Średnie miejsce: **4,42**\n  * Liczba gier: 8 516\n  * Top 4 (wygrana): 51,2%\n  * 1. miejsce: 12,1%\n\n* **Jinx**:\n  * Średnie miejsce: **4,60**\n  * Liczba gier: 5 518\n  * Top 4 (wygrana): 48,5%\n  * 1. miejsce: 11,2%",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jhin"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 6.99,
+      "error": null
+    },
+    {
+      "id": "multi_step",
+      "category": "comparison",
+      "question": "Który z bohaterów, Sett czy Zed, ma wyższy top 4 rate? Podaj też najlepszy augment dla tego lepszego.",
+      "answer": "Wyższy top 4 rate ma **Sett**.\n\n### Porównanie bohaterów:\n* **Sett**:\n  * **Top 4 rate**: 52,8%\n  * **Średnie miejsce**: 4,31\n  * **Liczba gier**: 10 411\n* **Zed**:\n  * **Top 4 rate**: 50,8%\n  * **Średnie miejsce**: 4,45\n  * **Liczba gier**: 8 758\n\n### Najlepszy augment dla Setta:\nNajlepszym augmentem pod względem średniego miejsca (przy minimum 100 grach) jest **Rajdowy Boss**:\n* **Średnie miejsce**: 2,98 (o 1,33 lepsze niż średnia Setta)\n* **Top 4 rate**: 76,6%\n* **Współczynnik 1. miejsca**: 35,3%\n* **Liczba gier**: 329",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Sett"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Zed"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "n": 5,
+            "champion": "Sett"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 8.93,
+      "error": null
+    },
+    {
+      "id": "oos_unknown_champion",
+      "category": "out_of_scope",
+      "question": "Jak radzi sobie Pikachu w Arenie?",
+      "answer": "Postać **Pikachu** nie występuje w League of Legends i nie ma jej w danych dotyczących trybu Arena.",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "champion",
+            "text": "Pikachu"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 4.78,
+      "error": null
+    },
+    {
+      "id": "oos_runes",
+      "category": "out_of_scope",
+      "question": "Jakie runy najlepiej brać na Jinx w Arenie?",
+      "answer": "W trybie Arena w League of Legends nie ma tradycyjnego systemu run (zamiast nich wybiera się ulepszenia – augmenty), a dostępne narzędzia analityczne nie zawierają informacji o runach. \n\nJeśli interesują Cię najlepsze **ulepszenia (augmenty)** lub **przedmioty** dla Jinx w Arenie, daj znać!",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [],
+      "model_turns": 1,
+      "seconds": 4.92,
+      "error": null
+    },
+    {
+      "id": "oos_patch",
+      "category": "out_of_scope",
+      "question": "Jaki był winrate Jinx w rankedach na patchu 14.5?",
+      "answer": "Nie posiadam takich danych. Moje narzędzia i statystyki dotyczą wyłącznie trybu Arena (2v2v2v2) i nie zawierają informacji o grach rankingowych na Summoner's Rift ani danych podzielonych na konkretne patche (np. 14.5).",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [],
+      "model_turns": 1,
+      "seconds": 4.03,
+      "error": null
+    },
+    {
+      "id": "oos_item_price",
+      "category": "out_of_scope",
+      "question": "Ile złota kosztuje Ostrze Nieskończoności?",
+      "answer": "Dostępne narzędzia i dane statystyczne nie zawierają informacji o kosztach zakupu przedmiotów w złocie. Posiadam jedynie statystyki meczowe (m.in. liczbę gier, średnie miejsce oraz współczynnik top 4).",
+      "run": 2,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [],
+      "model_turns": 1,
+      "seconds": 3.42,
+      "error": null
+    },
+    {
+      "id": "champ_basic",
+      "category": "single_tool",
+      "question": "Jak radzi sobie Jinx w Arenie?",
+      "answer": "Oto statystyki **Jinx** w trybie Arena:\n\n* **Liczba gier:** 5 518\n* **Średnie miejsce:** 4,60 (w skali 1–8, gdzie niższe miejsce oznacza lepszy wynik; średnia wynosi 4,50)\n* **Top 4 (zwycięstwo):** 48,5%\n* **Top 2:** 23,2%\n* **1. miejsce:** 11,2%\n* **Częstość wyboru (pick share):** 0,61%\n\nJinx radzi sobie nieco poniżej przeciętnej (średnie miejsce 4,60 i wskaźnik wygranych poniżej 50%).\n\nJej najlepiej radzące sobie ulepszenia (min. 100 gier) to:\n1. **Obrona albo Nic** – śr. miejsce 3,71 (Top 4: 65,8%, 117 gier)\n2. **Obie Ręce Zajęte** – śr. miejsce 3,78 (Top 4: 63,8%, 879 gier)\n3. **Wrażliwość** – śr. miejsce 3,81 (Top 4: 65,9%, 261 gier)",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "n": 3,
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 9.89,
+      "error": null
+    },
+    {
+      "id": "champ_top4",
+      "category": "single_tool",
+      "question": "Jaki jest top 4 rate Wukonga?",
+      "answer": "Top-4 rate Wukonga w trybie Arena wynosi **49,3%** (0,493).\n\nKluczowe statystyki Wukonga:\n- **Liczba gier:** 3 789\n- **Średnie miejsce:** 4,54\n- **Top 4 rate:** 49,3%\n- **Top 2 rate:** 22,2%\n- **Wskaźnik 1. miejsca:** 10,8%",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Wukong"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 5.67,
+      "error": null
+    },
+    {
+      "id": "champ_games",
+      "category": "single_tool",
+      "question": "Ile gier w danych zagrano Settem?",
+      "answer": "W danych zarejestrowano **10 411** gier Settem. \n\nDodatkowe statystyki:\n- **Średnie miejsce:** 4,31\n- **Top 4 (wygrana):** 52,8%\n- **Top 2:** 30,6%\n- **1. miejsce:** 18,0%\n- **Wskaźnik wyboru (pick share):** 1,16%",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Sett"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 4.42,
+      "error": null
+    },
+    {
+      "id": "aug_champion",
+      "category": "augments",
+      "question": "Jakie są 3 najlepsze augmenty dla Jinx?",
+      "answer": "Oto 3 najlepsze ulepszenia (augmenty) dla Jinx pod względem średniego miejsca (minimum 100 gier):\n\n1. **Obrona albo Nic**\n   - Średnie miejsce: **3,71**\n   - Wskaźnik Top 4: **65,8%** (1. miejsce: 21,4%)\n   - Liczba gier: **117**\n\n2. **Obie Ręce Zajęte**\n   - Średnie miejsce: **3,78**\n   - Wskaźnik Top 4: **63,8%** (1. miejsce: 18,5%)\n   - Liczba gier: **879**\n\n3. **Wrażliwość**\n   - Średnie miejsce: **3,81**\n   - Wskaźnik Top 4: **65,9%** (1. miejsce: 17,2%)\n   - Liczba gier: **261**\n\n*(Dla porównania bazowe średnie miejsce Jinx wynosi 4,60).*",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "n": 3
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 8.86,
+      "error": null
+    },
+    {
+      "id": "aug_global",
+      "category": "augments",
+      "question": "Który augment jest najlepszy ogólnie, niezależnie od bohatera (minimum 100 gier)?",
+      "answer": "Najlepszym augmentem ogólnie (niezależnie od bohatera, min. 100 gier) jest **Energia Ogromnego Smoka**.\n\nStatystyki:\n- **Średnie miejsce:** 2.96 (o 1.54 lepsze od średniej 4.50)\n- **Top 4:** 77.4%\n- **Top 2:** 54.7%\n- **Wygrane (1. miejsce):** 33.8%\n- **Liczba gier:** 411\n\nDla porównania, kolejnymi najlepszymi ulepszeniami w zestawieniu są:\n2. **Ochroniarz** – średnie miejsce: 3.64 (Top 4: 67.0%, 7 620 gier)\n3. **Narzędzie wielofunkcyjne** – średnie miejsce: 3.69 (Top 4: 66.5%, 5 522 gier)\n4. **Azyl** – średnie miejsce: 3.69 (Top 4: 65.6%, 8 113 gier)\n5. **Ulepszona Moc** – średnie miejsce: 3.70 (Top 4: 66.8%, 18 077 gier)",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "min_games": 100,
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 8.19,
+      "error": null
+    },
+    {
+      "id": "aug_english",
+      "category": "augments",
+      "question": "What are the best augments for Jhin?",
+      "answer": "Here are the best augments for **Jhin** in Arena (ranked by average placement, minimum 100 games), compared to his baseline average placement of **4.42** across 8,516 games:\n\n1. **Wyższa Szkoła Błaznowania**\n   - **Average Placement:** 3.40 (-1.02 vs baseline)\n   - **Top-4 Rate:** 70.8%\n   - **First-Place Rate:** 21.1%\n   - **Games:** 161\n\n2. **Za Moment Wracamy**\n   - **Average Placement:** 3.50 (-0.92 vs baseline)\n   - **Top-4 Rate:** 72.2%\n   - **First-Place Rate:** 19.4%\n   - **Games:** 144\n\n3. **Boska interwencja**\n   - **Average Placement:** 3.50 (-0.92 vs baseline)\n   - **Top-4 Rate:** 70.9%\n   - **First-Place Rate:** 17.9%\n   - **Games:** 117\n\n4. **Leczenie Krytyczne**\n   - **Average Placement:** 3.60 (-0.82 vs baseline)\n   - **Top-4 Rate:** 66.7%\n   - **First-Place Rate:** 17.6%\n   - **Games:** 108\n\n5. **Rewolucja Przywoływaczy**\n   - **Average Placement:** 3.62 (-0.80 vs baseline)\n   - **Top-4 Rate:** 67.7%\n   - **First-Place Rate:** 14.2%\n   - **Games:** 232",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jhin"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 9.46,
+      "error": null
+    },
+    {
+      "id": "aug_small_sample",
+      "category": "augments",
+      "question": "Pokaż najlepsze augmenty dla Rek'Sai, nawet takie, które wybrano tylko kilka razy (minimum 1 gra).",
+      "answer": "Oto najlepsze augmenty dla **Rek'Sai** (przy minimalnym progu 1 gry), uszeregowane według średniego miejsca (im niższe, tym lepsze). \n\n*Uwaga: Wiele z tych pozycji ma bardzo małą próbę gier, przez co statystyki mogą być niemiarodajne.*\n\n1. **Symbiotyczna Mutacja**\n   * Gry: 1\n   * Średnie miejsce: 2.00\n   * Top 4: 100% (1.00)\n\n2. **Gorąca Wyprzedaż**\n   * Gry: 7\n   * Średnie miejsce: 2.71\n   * Top 4: 85.7% (0.857)\n\n3. **Umysł Roju**\n   * Gry: 9\n   * Średnie miejsce: 2.89\n   * Top 4: 100% (1.00)\n\n4. **Krąg Śmierci**\n   * Gry: 1\n   * Średnie miejsce: 3.00\n   * Top 4: 100% (1.00)\n\n5. **Apteczka**\n   * Gry: 1\n   * Średnie miejsce: 3.00\n   * Top 4: 100% (1.00)\n\n6. **Matrioszka**\n   * Gry: 12\n   * Średnie miejsce: 3.25\n   * Top 4: 75.0% (0.750)\n\n7. **Rewolucja Przywoływaczy**\n   * Gry: 40\n   * Średnie miejsce: 3.35\n   * Top 4: 77.5% (0.775)\n\n8. **Energiczność**\n   * Gry: 8\n   * Średnie miejsce: 3.38\n   * Top 4: 50.0% (0.500)\n\n9. **Wysięgnikowa Ręka**\n   * Gry: 43\n   * Średnie miejsce: 3.42\n   * Top 4: 65.1% (0.651)\n\n10. **Nie do Przeskoczenia**\n    * Gry: 13\n    * Średnie miejsce: 3.46\n    * Top 4: 76.9% (0.769)\n\n*(Średnie miejsce bazowe Rek'Sai wynosi 4.71 na przestrzeni 2756 gier).*",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "champion",
+            "text": "Rek'Sai"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "n": 10,
+            "champion": "Rek'Sai",
+            "min_games": 1
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 14.76,
+      "error": null
+    },
+    {
+      "id": "items_compare",
+      "category": "items",
+      "question": "Co jest lepsze na Jinx: Ostrze Nieskończoności czy Pogromca Krakenów?",
+      "answer": "Na Jinx zdecydowanie lepiej wypada **Ostrze Nieskończoności**.\n\nStatystyki obu przedmiotów:\n* **Ostrze Nieskończoności**:\n  * Liczba gier: **3 721**\n  * Średnie miejsce: **4.34** (niższe = lepsze)\n  * Top-4 rate (zwycięstwo): **53.3%**\n  * Top-2 rate: **25.5%**\n* **Pogromca Krakenów**:\n  * Liczba gier: **1 716**\n  * Średnie miejsce: **4.67**\n  * Top-4 rate: **46.2%**\n  * Top-2 rate: **20.5%**\n\nGdy gracze kupili **oba przedmioty** (1 201 gier), średnie miejsce wyniosło **4.49**, a top-4 rate **49.1%**.\n\n*Warto pamiętać, że statystyki przedmiotów pochodzą z końcowego ekwipunku graczy, więc pokazują korelację, a nie bezpośredni związek przyczynowo-skutkowy.*",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Ostrze Nieskończoności",
+            "kind": "item"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "item",
+            "text": "Pogromca Krakenów"
+          }
+        },
+        {
+          "tool": "compare_items",
+          "args": {
+            "item_a": "Ostrze Nieskończoności",
+            "item_b": "Pogromca Krakenów",
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 13.16,
+      "error": null
+    },
+    {
+      "id": "items_no_diacritics",
+      "category": "typos",
+      "question": "ostrze nieskonczonosci vs zaplata zniwiarza na jinx, co daje lepsze miejsce?",
+      "answer": "Na Jinx nieco lepsze wyniki osiąga **Zapłata Żniwiarza** (średnie miejsce 4,30 w porównaniu do 4,34 na Ostrzu Nieskończoności – im niższe miejsce, tym lepiej).\n\nOto szczegółowe porównanie:\n\n* **Zapłata Żniwiarza**:\n  * Gry: 1 791\n  * Średnie miejsce: **4,30**\n  * Odsetek top 4: **53,8%** (top 2: 28,0%, 1. miejsce: 13,9%)\n\n* **Ostrze Nieskończoności**:\n  * Gry: 3 721\n  * Średnie miejsce: **4,34**\n  * Odsetek top 4: **53,3%** (top 2: 25,5%, 1. miejsce: 12,2%)\n\n* **Oba przedmioty razem**:\n  * Gry: 1 159\n  * Średnie miejsce: **4,04**\n  * Odsetek top 4: **58,5%**\n\n*Uwaga: Statystyki pochodzą z końcowego ekwipunku, co oznacza korelację, a nie bezpośredni związek przyczynowo-skutkowy (gracze odpadający wcześniej mają mniej przedmiotów).*",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "ostrze nieskonczonosci",
+            "kind": "item"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "item",
+            "text": "zaplata zniwiarza"
+          }
+        },
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "jinx",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "compare_items",
+          "args": {
+            "item_b": "Zapłata Żniwiarza",
+            "champion": "Jinx",
+            "item_a": "Ostrze Nieskończoności"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 10.63,
+      "error": null
+    },
+    {
+      "id": "typo_champion",
+      "category": "typos",
+      "question": "Jak gra się Jinxx?",
+      "answer": "Oto statystyki dla **Jinx** w trybie Arena:\n\n### Ogólne statystyki\n* **Liczba gier:** 5 518\n* **Średnie miejsce:** 4,60 (im niższe, tym lepsze)\n* **Wskaźnik Top 4:** 48,5%\n* **Wskaźnik Top 2:** 23,2%\n* **Wskaźnik 1. miejsca:** 11,2%\n* **Częstość wyboru (pick share):** 0,61%\n\n---\n\n### Najlepsze ulepszenia (min. 50 gier)\n1. **Przesyt** – średnie miejsce: **3,41** | Top 4: **70,6%** | 1. miejsce: **25,5%** (51 gier)\n2. **Zabójca do Wynajęcia** – średnie miejsce: **3,63** | Top 4: **66,7%** | 1. miejsce: **20,0%** (75 gier)\n3. **Boska interwencja** – średnie miejsce: **3,66** | Top 4: **71,1%** | 1. miejsce: **19,7%** (76 gier)\n4. **Obrona albo Nic** – średnie miejsce: **3,71** | Top 4: **65,8%** | 1. miejsce: **21,4%** (117 gier)\n5. **Brylantowa Rękawica** – średnie miejsce: **3,71** | Top 4: **68,8%** | 1. miejsce: **15,0%** (80 gier)",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "kind": "champion",
+            "text": "Jinxx"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Jinx",
+            "min_games": 50,
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 11.79,
+      "error": null
+    },
+    {
+      "id": "typo_mundo",
+      "category": "typos",
+      "question": "staty dla mundo",
+      "answer": "Oto statystyki **Dr Mundo** w trybie Arena:\n\n### Ogólne statystyki:\n* **Liczba gier:** 8 905\n* **Średnie miejsce:** 4,41\n* **Top 4 (zwycięstwo):** 50,7%\n* **Top 2:** 28,8%\n* **1. miejsce:** 17,2%\n* **Popularność (pick share):** 0,99%\n\n### Najlepsze ulepszenia (augumenty):\n1. **Centrum Wszechświata** – śr. miejsce: **3,26** (Top 4: 72,7%, 598 gier)\n2. **Wrażliwość** – śr. miejsce: **3,27** (Top 4: 71,5%, 242 gry)\n3. **Boska interwencja** – śr. miejsce: **3,34** (Top 4: 71,8%, 110 gier)\n4. **Ulepszona Moc** – śr. miejsce: **3,42** (Top 4: 72,1%, 226 gier)\n5. **Wyższa Szkoła Błaznowania** – śr. miejsce: **3,51** (Top 4: 64,6%, 147 gier)",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "mundo",
+            "kind": "champion"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Dr Mundo"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "champion": "Dr Mundo",
+            "n": 5
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 11.6,
+      "error": null
+    },
+    {
+      "id": "compare_champs",
+      "category": "comparison",
+      "question": "Kto ma lepsze średnie miejsce: Jhin czy Jinx?",
+      "answer": "Lepsze średnie miejsce ma **Jhin** (im niższa wartość, tym lepiej).\n\nPorównanie statystyk:\n* **Jhin**:\n  * Średnie miejsce: **4,42**\n  * Top 4 rate: **51,2%**\n  * Liczba gier: **8 516**\n* **Jinx**:\n  * Średnie miejsce: **4,60**\n  * Top 4 rate: **48,5%**\n  * Liczba gier: **5 518**",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jhin"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 7.66,
+      "error": null
+    },
+    {
+      "id": "multi_step",
+      "category": "comparison",
+      "question": "Który z bohaterów, Sett czy Zed, ma wyższy top 4 rate? Podaj też najlepszy augment dla tego lepszego.",
+      "answer": "Wyższy top 4 rate ma **Sett**.\n\n### Porównanie statystyk:\n* **Sett**:\n  * **Top 4 rate**: 52,8%\n  * **Średnie miejsce**: 4,31\n  * **Liczba gier**: 10 411\n* **Zed**:\n  * **Top 4 rate**: 50,8%\n  * **Średnie miejsce**: 4,45\n  * **Liczba gier**: 8 758\n\n### Najlepszy augment dla Setta:\n* **Rajdowy Boss**:\n  * **Średnie miejsce**: 2,98 (o 1,33 lepsze od średniej bohatera)\n  * **Top 4 rate**: 76,6%\n  * **Liczba gier**: 329",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "tools": true,
+        "values": true,
+        "grounded": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Sett"
+          }
+        },
+        {
+          "tool": "champion_stats",
+          "args": {
+            "champion": "Zed"
+          }
+        },
+        {
+          "tool": "top_augments",
+          "args": {
+            "n": 1,
+            "champion": "Sett"
+          }
+        }
+      ],
+      "model_turns": 3,
+      "seconds": 9.69,
+      "error": null
+    },
+    {
+      "id": "oos_unknown_champion",
+      "category": "out_of_scope",
+      "question": "Jak radzi sobie Pikachu w Arenie?",
+      "answer": "Pikachu nie jest bohaterem *League of Legends* i nie ma go w danych trybu Arena.",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "find_name",
+          "args": {
+            "text": "Pikachu",
+            "kind": "champion"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 5.75,
+      "error": null
+    },
+    {
+      "id": "oos_runes",
+      "category": "out_of_scope",
+      "question": "Jakie runy najlepiej brać na Jinx w Arenie?",
+      "answer": "W trybie Arena nie wybiera się tradycyjnych run (ani narzędzia nie zawierają o nich danych). Zamiast run w Arenie wybiera się **ulepszenia (augmenty)**.\n\nOto najlepsze ulepszenia dla Jinx według średniego miejsca (dla min. 100 gier; bazowe średnie miejsce Jinx to 4,60):\n\n1. **Obrona albo Nic** – średnie miejsce: **3,71**, Top 4: **65,8%** (117 gier)\n2. **Obie Ręce Zajęte** – średnie miejsce: **3,78**, Top 4: **63,8%** (879 gier)\n3. **Wrażliwość** – średnie miejsce: **3,81**, Top 4: **65,9%** (261 gier)\n4. **Pochłanianie Dusz** – średnie miejsce: **3,89**, Top 4: **66,5%** (257 gier)\n5. **Dobądź Miecza** – średnie miejsce: **3,92**, Top 4: **60,5%** (370 gier)",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [
+        {
+          "tool": "top_augments",
+          "args": {
+            "n": 5,
+            "champion": "Jinx"
+          }
+        }
+      ],
+      "model_turns": 2,
+      "seconds": 9.42,
+      "error": null
+    },
+    {
+      "id": "oos_patch",
+      "category": "out_of_scope",
+      "question": "Jaki był winrate Jinx w rankedach na patchu 14.5?",
+      "answer": "Nie posiadam danych dotyczących gier rankingowych (Summoner's Rift) ani statystyk z konkretnych patchy, takich jak 14.5. Moja baza danych obejmuje wyłącznie statystyki z trybu Arena (2v2v2v2).",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [],
+      "model_turns": 1,
+      "seconds": 2.71,
+      "error": null
+    },
+    {
+      "id": "oos_item_price",
+      "category": "out_of_scope",
+      "question": "Ile złota kosztuje Ostrze Nieskończoności?",
+      "answer": "Dostępne narzędzia i dane statystyczne nie zawierają informacji o kosztach przedmiotów w złocie, dlatego nie jestem w stanie odpowiedzieć na to pytanie.",
+      "run": 3,
+      "passed": true,
+      "checks": {
+        "grounded": true,
+        "mentions": true
+      },
+      "missing_tools": [],
+      "missing_values": [],
+      "ungrounded": [],
+      "tool_calls": [],
+      "model_turns": 1,
+      "seconds": 3.3,
+      "error": null
+    }
+  ]
+}
